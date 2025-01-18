@@ -1,0 +1,129 @@
+@media print {
+  /* General styles */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Hide non-printable elements */
+  .no-print,
+  button,
+  nav,
+  .fixed,
+  [role="dialog"],
+  .shadow-lg,
+  .shadow-xl {
+    display: none !important;
+  }
+
+  /* Reset background colors and shadows */
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100 {
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  /* Reset text colors */
+  .text-gray-500,
+  .text-gray-600,
+  .text-gray-700,
+  .text-gray-900 {
+    color: black !important;
+  }
+
+  /* Ensure images are visible */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure proper page breaks */
+  h1, h2, h3, h4 {
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  li, p {
+    page-break-inside: avoid !important;
+  }
+
+  /* Add URLs after links */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+  }
+
+  /* Ensure proper margins */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Specific component styles */
+  .itinerary-day {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 1cm !important;
+  }
+
+  .accommodation {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Add page numbers */
+  @page {
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  /* Add header with package title */
+  @page {
+    @top-center {
+      content: "Safari Package Details";
+    }
+  }
+
+  /* Grid adjustments */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    margin-bottom: 1cm !important;
+  }
+
+  /* Map placeholder */
+  .map-container::before {
+    content: "[Interactive map not available in print version]";
+    display: block;
+    text-align: center;
+    padding: 1cm;
+    border: 1px solid #ccc;
+    margin: 1cm 0;
+  }
+
+  /* Print-specific layout adjustments */
+  .print-full-width {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .print-columns-2 {
+    column-count: 2 !important;
+    column-gap: 2cm !important;
+  }
+
+  /* Add QR code space for digital version */
+  .print-footer::after {
+    content: "Scan for digital version:";
+    display: block;
+    text-align: center;
+    margin-top: 2cm;
+    padding: 1cm;
+    border: 1px dashed #ccc;
+  }
+} 

@@ -19,3 +19,97 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media print {
+  /* General print styles */
+  @page {
+    margin: 2cm;
+  }
+
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print\:block {
+    display: block !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Reset backgrounds and shadows */
+  * {
+    background-color: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  /* Links */
+  a {
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+  }
+
+  /* Images */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Page breaks */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  ul, ol, dl {
+    page-break-before: avoid;
+  }
+
+  /* Specific styles for ItineraryDetail */
+  .print-full-width {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .print-columns-2 {
+    column-count: 2;
+    column-gap: 2rem;
+  }
+
+  .itinerary-day {
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+  }
+
+  .map-container {
+    page-break-inside: avoid;
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+  }
+
+  .print-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+  }
+}
